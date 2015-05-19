@@ -16,17 +16,10 @@ function displayChannel(response) {
 		viewCount = response.items[0].statistics.viewCount;
 		videoCount = response.items[0].statistics.videoCount;
 		thumbnailImage = response.items[0].snippet.thumbnails.high.url;
-		//        bannerImageUrl = response.items[0].brandingSettings.image.bannerImageUrl;
 		bannerImageUrl = response.items[0].brandingSettings.image.bannerMobileExtraHdImageUrl;
 		
-		
-	//	$('#bannerImage').style.backgroundImage = "url('" + bannerImageUrl + "')";
-		
-		
-		$('#channelTitle').append(channelTitle);
-	//	$('.page-header').css("backgroundImage", "url(" + bannerImageUrl + ") no-repeat;");
-		
-		//   document.getElementById('uploads').style.borderBottom = '3px solid #CD5C5C';
+		$('h1').append(channelTitle);
+		$('.page-header').css("backgroundImage", "url('" + bannerImageUrl + "');");
 		
 		playlistId = response.result.items[0].contentDetails.relatedPlaylists.uploads;
 		requestVideoPlaylist(playlistId);
