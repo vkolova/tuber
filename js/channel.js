@@ -18,7 +18,7 @@ function displayChannel(response) {
 		thumbnailImage = response.items[0].snippet.thumbnails.high.url;
 		bannerImageUrl = response.items[0].brandingSettings.image.bannerMobileExtraHdImageUrl;
 		
-		$('h1').append(channelTitle);
+		$('h1').html(channelTitle);
 		$('.page-header').css("backgroundImage", "url('" + bannerImageUrl + "');");
 		
 		playlistId = response.result.items[0].contentDetails.relatedPlaylists.uploads;
