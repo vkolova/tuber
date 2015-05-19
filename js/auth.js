@@ -16,7 +16,7 @@ function checkAuth() {
 	gapi.auth.authorize({
 		client_id: clientId,
 		scope: scopes,
-		immediate: true
+		immediate: false
 	}, handleAuthResult);
 }
 
@@ -34,6 +34,6 @@ function handleAuthResult(authResult) {
 
 function loadAPIClientInterfaces() {
 	gapi.client.load('youtube', 'v3', function() {
-		handleAPILoaded();
+		loadUserChannel();
 	});
 }
