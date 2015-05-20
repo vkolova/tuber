@@ -85,7 +85,7 @@ function requestVideoPlaylist(playlistId, pageToken) {
 			var prevDis = prevPageToken ? '' : 'disabled';
 			$('.previous').css('class', "previous" + prevDis);
 		} else {
-			$('#video-container').append('<div class="alert alert-info" role="alert">Sorry, you have no uploaded videos :(</div>');
+			$('#video-container').append('<div class="alert alert-info" role="alert"><b>Sorry, you have no uploaded videos :(</b></div>');
 		}
 	});
 }
