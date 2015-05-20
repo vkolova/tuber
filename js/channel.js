@@ -25,6 +25,7 @@ function displayChannel(response) {
 
 		$('h1').html(channelTitle);
 		$('.page-header').css("background-image", "url(" + bannerImageUrl + ")");
+		$('.page-header').css("height", "26vw");
 		$('#channelThumbnail').attr("src", thumbnailImage);
 		$('#channelThumbnail').css({"border-radius": "50px"});
 		
@@ -49,9 +50,7 @@ function requestVideoPlaylist(playlistId, pageToken) {
 	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
-	
-	$('#video-container').html('<nav><ul class="pager"><li class="previous"><a onclick="previousPage();"><span aria-hidden="true">&larr;</span> Older</a></li><li class="next disabled"><a onclick="nextPage();">Newer <span aria-hidden="true">&rarr;</span></a></li></ul></nav>');
-	
+
 	var requestOptions = {
 		playlistId: playlistId,
 		part: 'snippet',
@@ -64,32 +63,35 @@ function requestVideoPlaylist(playlistId, pageToken) {
 	request.execute(function(response) {
 	// Only show pagination buttons if there is a pagination token for the
 	// next or previous page of results.
-	
-		nextPageToken = response.result.nextPageToken;
-		var nextDis = nextPageToken ? '' : 'disabled';
-		$('.next').css('class', "next" + nextDis);
-		
-		prevPageToken = response.result.prevPageToken
-		var prevDis = prevPageToken ? '' : 'disabled';
-		$('.previous').css('class', "previous" + prevDis);
+
 
 		var playlistItems = response.result.items;
 		if (playlistItems) {
+			
+			$('#video-container').append('<div class="media"><div class="media-left"><div><div class="media-body"></div></div>')
+			
 			$.each(playlistItems, function(index, item) {
 				displayResult(item.snippet);
 			});
+
+			$('#video-container').html('<nav><ul class="pager"><li class="previous"><a onclick="previousPage();"><span aria-hidden="true">&larr;</span> Older</a></li><li class="next disabled"><a onclick="nextPage();">Newer <span aria-hidden="true">&rarr;</span></a></li></ul></nav>');
+		
+			nextPageToken = response.result.nextPageToken;
+			var nextDis = nextPageToken ? '' : 'disabled';
+			$('.next').css('class', "next" + nextDis);
+			
+			prevPageToken = response.result.prevPageToken
+			var prevDis = prevPageToken ? '' : 'disabled';
+			$('.previous').css('class', "previous" + prevDis);
 		} else {
-		$('#video-container').html('<div class="alert alert-info" role="alert">Sorry, you have no uploaded videos :(</div>');
+			$('#video-container').html('<div class="alert alert-info" role="alert">Sorry, you have no uploaded videos :(</div>');
 		}
 	});
-
 }
 
 function displayResult(videoSnippet) {
-	var title = videoSnippet.title;
-	var videoId = videoSnippet.resourceId.videoId;
-	
-	
+	$('.media-left').append('<a><img class="media-object" src="' + videoSnippet.thumbnails.high.url + '"></a>');
+	$('.media-body').append('<h4 class="media-heading">' + videoSnippet.title + '</h4>');
 }
 
 function nextPage() {
@@ -108,6 +110,49 @@ function loadPlaylists() {
 	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
+	
+	var requestOptions = {
+		channelId: channelId,
+		mine: true,
+		part: 'snippet, contentDetails, status, contentDetails',
+		maxResults: 10
+	};
+	
+	var request = gapi.client.youtube.playlists.list(requestOptions);
+	
+	request.execute(function(response) {
+
+		var playlistList = response.result.items;
+
+		if (playlistList) {
+			$('#video-container').append('<div class="media"><div class="media-left"><div><div class="media-body"></div></div>')
+			
+			$.each(playList, function(index, item) {
+				$('.media-left').append('<a><img class="media-object" src="' + item.thumbnails.high.url + '"></a>');
+				$('.media-body').append('<h4 class="media-heading">' + item.title + '</h4>');
+				switch(item.status.privacyStatus) {
+					case "private":
+						$('.media-heading').append(' <span class="label label-danger">private</span>');
+						break;
+					case "unlisted":
+						$('.media-heading').append(' <span class="label label-default">unlisted</span>');
+						break;
+					default:
+						$('.media-heading').append(' <span class="label label-success">public</span>');
+				}
+				$('.media-body').append(item.contentDetails.itemCount + " videos");
+			});
+			for (var i = 0; i < playlistList.length; i++) {
+				document.getElementById('playlist-container').innerHTML += "<p>" + playlistList[i].snippet.title + "</p>";
+				document.getElementById('playlist-container').innerHTML += '<img src="' + playlistList[i].snippet.thumbnails.medium.url + '" />';
+				document.getElementById('playlist-container').innerHTML += "<p>" + playlistList[i].status.privacyStatus + "</p>";
+				document.getElementById('playlist-container').innerHTML += "<p>" + playlistList[i].contentDetails.itemCount + " videos" + "</p>";
+			}
+			} else {
+				document.getElementById('playlist-container').innerHTML += 'Sorry, you have no video playlists :(';
+			}
+	});
+
 	
 }
 
