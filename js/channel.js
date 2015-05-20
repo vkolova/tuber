@@ -114,7 +114,7 @@ function moreDetails(id) {
 		id: id
 	};
 	
-	var request = gapi.client.youtube.videos(requestOptions);
+	var request = gapi.client.youtube.videos.list(requestOptions);
 	request.execute(function(response) {
 		return response.result.items[0];
 		
