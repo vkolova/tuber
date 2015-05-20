@@ -100,7 +100,7 @@ function displayResult(item) {
 									'</div>' +
 									'<div class="media-body">' + 
 										'<h4 class="media-heading">' + item.snippet.title + '</h4>' + 
-										'<p>' + more.snippet.description + '</p>'
+										'<p>' + more.snippet.description + '</p>' +
 									'</div>' +
 								'</div>');
 }
@@ -116,6 +116,7 @@ function moreDetails(id) {
 	if (pageToken) {
 		requestOptions.pageToken = pageToken;
 	}
+	
 	var request = gapi.client.youtube.videos(requestOptions);
 	request.execute(function(response) {
 		
