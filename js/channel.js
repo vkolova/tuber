@@ -125,7 +125,7 @@ function loadPlaylists() {
 		var playlistList = response.result.items;
 
 		if (playlistList) {
-				$('#playlists-container').append('<div class="media"><div class="media-left"><div><div class="media-body"></div></div>')
+				$('#playlist-container').append('<div class="media"><div class="media-left"><div><div class="media-body"></div></div>')
 				
 				$.each(playlistList, function(index, item) {
 					$('.media-left').append('<a><img class="media-object" src="' + item.snippet.thumbnails.high.url + '"></a>');
@@ -143,7 +143,7 @@ function loadPlaylists() {
 					$('.media-body').append(item.contentDetails.itemCount + " videos");
 				});
 			} else {
-				document.getElementById('playlist-container').innerHTML += 'Sorry, you have no video playlists :(';
+				$('#playlist-container').html('<div class="alert alert-info" role="alert">Sorry, you have no video playlists :(</div>');
 			}
 	});
 
