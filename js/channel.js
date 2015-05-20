@@ -1,3 +1,8 @@
+var channelId, subscriberCount, totalUploadViews, channelTitle,
+	thumbnailImage, bannerImageUrl, publishedAt, totalUploadViews,
+	viewCount, videoCount, description, playlistId, nextPageToken, prevPageToken;
+
+
 function loadUserChannel() {
 	var request = gapi.client.youtube.channels.list({
 		mine: true, part: 'id, contentDetails, statistics, snippet, brandingSettings'});   
@@ -17,10 +22,11 @@ function displayChannel(response) {
 		videoCount = response.items[0].statistics.videoCount;
 		thumbnailImage = response.items[0].snippet.thumbnails.high.url;
 		bannerImageUrl = response.items[0].brandingSettings.image.bannerMobileExtraHdImageUrl;
-		
+
 		$('h1').html(channelTitle);
-		$('.page-header').css("background-image", "url('" + bannerImageUrl + "')");
+		$('.page-header').css("background-image", "url(" + bannerImageUrl + ")");
 		$('#channelThumbnail').attr("src", thumbnailImage);
+		$('#channelThumbnail').css(borderRadius: 50);
 		
 		playlistId = response.result.items[0].contentDetails.relatedPlaylists.uploads;
 		requestVideoPlaylist(playlistId);

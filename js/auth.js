@@ -21,14 +21,6 @@ function checkAuth() {
 	}, handleAuthResult);
 }
 
-function forceAuthCheck() {
-	gapi.auth.authorize({
-	client_id: clientId,
-	scope: scopes,
-	immediate: false
-	}, handleAuthResult);
-}
-
 function handleAuthResult(authResult) {
 	if (authResult && !authResult.error) {
 		$('#pre-auth').hide();
@@ -37,6 +29,14 @@ function handleAuthResult(authResult) {
 	} else {
 		$('#login-link').click(forceAuthCheck());
 	}
+}
+
+function forceAuthCheck() {
+	gapi.auth.authorize({
+	client_id: clientId,
+	scope: scopes,
+	immediate: false
+	}, handleAuthResult);
 }
 
 function loadAPIClientInterfaces() {
