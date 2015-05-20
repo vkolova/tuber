@@ -58,12 +58,12 @@ function requestVideoPlaylist(playlistId, pageToken) {
 	var requestOptions = {
 		playlistId: playlistId,
 		part: 'snippet, contentDetails',
-		maxResults: 10
+		maxResults: 1
 	};
 	if (pageToken) {
 		requestOptions.pageToken = pageToken;
 	}
-	var request = gapi.client.youtube.playlistItems.list(requestOptions);
+	var request = gapi.client.youtube.videos(requestOptions);
 	request.execute(function(response) {
 	// Only show pagination buttons if there is a pagination token for the
 	// next or previous page of results.
