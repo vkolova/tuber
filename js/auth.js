@@ -6,6 +6,7 @@ var scopes = ['https://www.googleapis.com/auth/youtube', 'https://www.googleapis
 
 
 function onClientLoad() {
+	$('#post-auth').hide();
 	gapi.auth.init(function() {
 		window.setTimeout(checkAuth, 1);
 	});
@@ -20,21 +21,21 @@ function checkAuth() {
 	}, handleAuthResult);
 }
 
+function forceAuthCheck() {
+	gapi.auth.authorize({
+	client_id: clientId,
+	scope: scopes,
+	immediate: false
+	}, handleAuthResult);
+}
+
 function handleAuthResult(authResult) {
 	if (authResult && !authResult.error) {
-		$('.pre-auth').hide();
-		$('.post-auth').show();
+		$('#pre-auth').hide();
+		$('#post-auth').show();
 		loadAPIClientInterfaces();
 	} else {
-		$('#login-link').click(
-			function() {
-				gapi.auth.authorize({
-				client_id: clientId,
-				scope: scopes,
-				immediate: true
-				}, handleAuthResult);
-			}
-		);
+		$('#login-link').click(forceAuthCheck());
 	}
 }
 

@@ -22,12 +22,21 @@
 	
 	<body>
 	
-	<div class="page-header">
-		<img class="thumbnail" id='channelThumbnail' src="..." alt="...">
-		
-		<h1></h1>
+	<div id="pre-auth">
+		<div class="alert alert-warning" role="alert">
+			Oh snap! This application requires access to your YouTube account.
+			Please <span id="login-link" onclick="forceAuthCheck()" ><b>authorize</b></span> to continue.
+		</div>
 	</div>
 	
+	<div id="post-auth">
+		
+		<div class="page-header">
+			<img class="thumbnail" id='channelThumbnail' src="..." alt="...">
+			
+			<h1></h1>
+		</div>
 	
+	</div>
 	</body>
 </html>

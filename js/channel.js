@@ -21,6 +21,7 @@ function displayChannel(response) {
 		$('h1').html(channelTitle);
 		$('.page-header').css("background-image", "url('" + bannerImageUrl + "');");
 		$('#channelThumbnail').attr("src", thumbnailImage);
+		$('#channelThumbnail').css({-webkit-border-radius: "50px", -moz-border-radius: "50px", border-radius: "50px"});
 		
 		playlistId = response.result.items[0].contentDetails.relatedPlaylists.uploads;
 		requestVideoPlaylist(playlistId);
