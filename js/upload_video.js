@@ -17,10 +17,10 @@ function loadUpload() {
 	uploadVideo();
 }
 
-function uploadVideo(response) {
+function uploadVideo(accessToken) {
 	
-	if(result.access_token) {
-		$('#upload-container').append('access_token success');
+	if(accessToken) {
+		$('#upload-container').append('access_token success' + accessToken);
 		var uploadVideo = new UploadVideo();
 		uploadVideo.ready(result.access_token);
 	}

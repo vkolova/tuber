@@ -3,7 +3,7 @@ var apiKey = 'AIzaSyD8rWAXviMi2sFCnVuNNyjHNuIKpwh5tK8';
 var scopes = ['https://www.googleapis.com/auth/youtube', 'https://www.googleapis.com/auth/youtube.readonly',
 			'https://www.googleapis.com/auth/youtube.upload', 'https://www.googleapis.com/auth/youtubepartner',
 			'https://www.googleapis.com/auth/youtubepartner-channel-audit', 'https://www.googleapis.com/auth/youtube.force-ssl'];
-var grantType = 'authorization_code';
+var grantType = 'authorization_code', accessToken;
 			
 function onClientLoad() {
 	$('#post-auth').hide();
@@ -23,9 +23,9 @@ function checkAuth() {
 }
 
 function handleAuthResult(authResult) {
+	accessToken = authResult.access_token;
+	
 	if (authResult && !authResult.error) {
-		
-alert(authResult.access_token);
 
 		$('#pre-auth').hide();
 		$('#post-auth').show();
