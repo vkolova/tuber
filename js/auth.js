@@ -25,7 +25,6 @@ function checkAuth() {
 function handleAuthResult(authResult) {
 	if (authResult && !authResult.error) {
 		
-alert(response.authResult.access_token);
 alert(authResult.access_token);
 
 		$('#pre-auth').hide();
