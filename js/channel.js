@@ -119,7 +119,7 @@ function moreDetails(id) {
 	var request = gapi.client.youtube.videos(requestOptions);
 	request.execute(function(response) {
 		
-		return response.result.items;
+		return response.result.items[0];
 		
 	});
 	
