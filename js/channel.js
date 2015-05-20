@@ -71,10 +71,8 @@ function requestVideoPlaylist(playlistId, pageToken) {
 		var playlistItems = response.result.items;
 		if (playlistItems) {
 			
-			$('#video-container').append('<div class="media"><div class="media-left"><div><div class="media-body"></div></div>')
-			
 			$.each(playlistItems, function(index, item) {
-				displayResult(item.snippet);
+				displayResult(item);
 			});
 
 			$('#video-container').append('<nav><ul class="pager"><li class="previous"><a onclick="previousPage();"><span aria-hidden="true">&larr;</span> Older</a></li><li class="next disabled"><a onclick="nextPage();">Newer <span aria-hidden="true">&rarr;</span></a></li></ul></nav>');
@@ -93,8 +91,8 @@ function requestVideoPlaylist(playlistId, pageToken) {
 }
 
 function displayResult(videoSnippet) {
-	$('.media-left').append('<a><img class="media-object" src="' + videoSnippet.thumbnails.meduim.url + '"></a>');
-	$('.media-body').append('<h4 class="media-heading">' + videoSnippet.title + '</h4>');
+	$('#video-container').append('<a><img class="media-object" src="' + videoSnippet.thumbnails.meduim.url + '"></a>');
+	$('#video-container').append('<h4 class="media-heading">' + videoSnippet.title + '</h4>');
 }
 
 function nextPage() {
