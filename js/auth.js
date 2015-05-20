@@ -41,6 +41,6 @@ function forceAuthCheck() {
 
 function loadAPIClientInterfaces() {
 	gapi.client.load('youtube', 'v3', function() {
-		loadUserChannel();
+		gapi.client.load('youtubeAnalytics', 'v1', loadUserChannel);
 	});
 }

@@ -119,7 +119,7 @@ function loadAbout() {
 	$('#playlist-container').html('');
 	$('#about-container').html('');
 	
-	if (description != undefined) 
+	if (description != undefined) {
 		$('#about-container').append('<p>' + description + '</p>')
 	;}
 	$('#about-container').append('<p>' + subscriberCount + ' subscribers' + '</p>');
