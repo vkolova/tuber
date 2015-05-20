@@ -29,11 +29,11 @@ function displayChannel(response) {
 		$('#channelThumbnail').attr("src", thumbnailImage);
 		$('#channelThumbnail').css({"border-radius": "50px"});
 		
-		uploadsLoad();
+		uploadsLoad(response);
 	}
 }
 
-function uploadsLoad() {
+function uploadsLoad(response) {
 	$('#uploads').addClass("active");
 	$('#playlists').removeClass("active");
 	$('#about').removeClass("active");
