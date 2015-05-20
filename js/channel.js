@@ -143,7 +143,7 @@ function loadPlaylists() {
 														'</div>' +
 														'<div class="media-body">' + 
 															'<h4 class="media-heading">' + item.snippet.title + status + '</h4>' + 
-														'</div>'
+														'</div>' +
 														item.contentDetails.itemCount + " videos" + 
 													'</div>');
 				});
