@@ -93,32 +93,18 @@ function requestVideoPlaylist(playlistId, pageToken) {
 
 function displayResult(item) {
 //	$('#video-container').append('<a><img class="media-object" src="' + item.snippet.thumbnails.meduim.url + '"></a>');
-	var more = moreDetails(item.snippet.id);
+
 	$('#video-container').append('<div class="media">' + 
 									'<div class="media-left media-top">' + 
 										'<a><img class="media-object" src="' + item.snippet.thumbnails.medium.url + '"></a>' + 
 									'</div>' +
 									'<div class="media-body">' + 
 										'<h4 class="media-heading">' + item.snippet.title + '</h4>' + 
-										'<p>' + more.description + '</p>' +
 									'</div>' +
 								'</div>');
 }
 
-function moreDetails(id) {
-	var requestOptions = {
-		part: 'id, snippet, contentDetails, fileDetails, statistics,' +
-				' status',
-		id: id
-	};
-	
-	var request = gapi.client.youtube.videos.list(requestOptions);
-	request.execute(function(response) {
-		return response.result.items[0];
-		
-	});
-	
-}
+
 
 function nextPage() {
 	requestVideoPlaylist(playlistId, nextPageToken);
