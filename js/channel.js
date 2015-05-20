@@ -113,7 +113,7 @@ function moreDetails(id) {
 		requestOptions.pageToken = pageToken;
 	}
 	
-	var request = gapi.client.youtube.videos.list(requestOptions);
+	var request = gapi.client.youtube.video.list(requestOptions);
 	request.execute(function(response) {
 		
 		return response.result.items[0];
