@@ -46,15 +46,10 @@ function uploadsLoad(response) {
 }
 
 function requestVideoPlaylist(playlistId, pageToken) {
-	/*$('#video-container').html('');
+	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
-	$('#upload-container').html('');*/
-	
-	$('#video-container').show();
-	$('#playlist-container').hide();
-	$('#about-container').hide();
-	$('#upload-container').hide();
+	$('#upload-container').html('');
 
 	var requestOptions = {
 		playlistId: playlistId,
@@ -118,16 +113,10 @@ function loadPlaylists() {
 	$('#about').removeClass("active");
 	$('#upload').removeClass("active");
 	
-	/*$('#video-container').html('');
+	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
-	$('#upload-container').html('');*/
-	
-	
-	$('#video-container').hide();
-	$('#playlist-container').show();
-	$('#about-container').hide();
-	$('#upload-container').hide();
+	$('#upload-container').html('');
 	
 	var requestOptions = {
 		channelId: channelId,
@@ -166,7 +155,7 @@ function loadPlaylists() {
 													'</div>');
 				});
 			} else {
-				$('#playlist-container').append('<div class="alert alert-info" role="alert">Sorry, you have no video playlists :(</div>');
+				$('#playlist-container').append('<div class="alert alert-info" role="alert"><b>Sorry, you have no video playlists :(</b></div>');
 			}
 	});
 
@@ -178,17 +167,11 @@ function loadAbout() {
 	$('#playlists').removeClass("active");
 	$('#about').addClass("active");
 	$('#upload').removeClass("active");
-	/*
+
 	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
-	$('#upload-container').html('');*/
-	
-	
-	$('#video-container').hide();
-	$('#playlist-container').hide();
-	$('#about-container').show();
-	$('#upload-container').hide();
+	$('#upload-container').html('');
 	
 	if (description != undefined) {
 		$('#about-container').append('<p>' + description + '</p>')
