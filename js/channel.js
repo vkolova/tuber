@@ -69,7 +69,7 @@ function requestVideoPlaylist(playlistId, pageToken) {
 
 
 		var playlistItems = response.result.items;
-		if (playlistItems) {
+		if (playlistItems.length > 0) {
 			
 			$.each(playlistItems, function(index, item) {
 				displayResult(item);
