@@ -9,8 +9,7 @@ function loadUserChannel() {
 	request.execute(displayChannel);
 }
 
-function displayChannel(response) {
-	alert(response.result.access_token);
+function displayChannel(response) {	
 	if ('error' in response) {
 		displayMessage(response.error.message);
 	} else {
