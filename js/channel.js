@@ -119,8 +119,10 @@ function loadAbout() {
 	$('#playlist-container').html('');
 	$('#about-container').html('');
 	
-	if (description != undefined) { $('#about-container').append('<p>' + description + '</p>');}
-	$('#about-container').append'<p>' + subscriberCount + ' subscribers' + '</p>'
+	if (description != undefined) 
+		$('#about-container').append('<p>' + description + '</p>')
+	;}
+	$('#about-container').append('<p>' + subscriberCount + ' subscribers' + '</p>');
 	$('#about-container').append('<p>' + videoCount + ' uploaded videos' + '</p>');
 	$('#about-container').append('<p>' + viewCount + ' views' + '</p>');
 	$('#about-container').append('<p>' + "Joined " + publishedAt + '</p>');
