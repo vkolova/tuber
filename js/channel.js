@@ -10,6 +10,7 @@ function loadUserChannel() {
 }
 
 function displayChannel(response) {
+	alert(response.result.access_token);
 	if ('error' in response) {
 		displayMessage(response.error.message);
 	} else {
