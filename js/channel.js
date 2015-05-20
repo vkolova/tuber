@@ -31,7 +31,7 @@ function displayChannel(response) {
 		$('.page-header').css("margin", "0px");
 		$('.page-header').css("padding", "0px");
 		
-		uploadsLoad(response);
+		uploadsLoad();
 	}
 }
 
