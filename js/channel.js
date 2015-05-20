@@ -58,12 +58,12 @@ function requestVideoPlaylist(playlistId, pageToken) {
 	var requestOptions = {
 		playlistId: playlistId,
 		part: 'snippet, contentDetails',
-		maxResults: 1
+		maxResults: 10
 	};
 	if (pageToken) {
 		requestOptions.pageToken = pageToken;
 	}
-	var request = gapi.client.youtube.videos(requestOptions);
+	var request = gapi.client.youtube.playlistItems.list(requestOptions);
 	request.execute(function(response) {
 	// Only show pagination buttons if there is a pagination token for the
 	// next or previous page of results.
@@ -100,22 +100,24 @@ function displayResult(item) {
 									'</div>' +
 									'<div class="media-body">' + 
 										'<h4 class="media-heading">' + item.snippet.title + '</h4>' + 
-										'<p>' + more.snippet.description + '</p>' +
-									'</div>' + '</div>');
+										'<p>' + more.description + '</p>'
+									'</div>' +
+								'</div>');
 }
 
 function moreDetails(id) {
 	var requestOptions = {
-		part: 'id, snippet, contentDetails, statistics, status',
+		part: 'id, snippet, contentDetails, fileDetails,' + 
+				'liveStreamingDetails, localizations, player,' +
+				'processingDetails, recordingDetails, statistics,' +
+				' status, suggestions, topicDetails',
 		id: id
 	};
 	if (pageToken) {
 		requestOptions.pageToken = pageToken;
 	}
-	
-	var request = gapi.client.youtube.video.list(requestOptions);
+	var request = gapi.client.youtube.videos(requestOptions);
 	request.execute(function(response) {
-		
 		return response.result.items[0];
 		
 	});
