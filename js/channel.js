@@ -25,7 +25,7 @@ function displayChannel(response) {
 
 		$('h1').html(channelTitle);
 		$('.page-header').css("background-image", "url(" + bannerImageUrl + ")");
-		$('.page-header').css("height", "26vw");
+		$('.page-header').css("height", "25vw");
 		$('#channelThumbnail').attr("src", thumbnailImage);
 		$('#channelThumbnail').css({"border-radius": "50px"});
 		
@@ -90,7 +90,7 @@ function requestVideoPlaylist(playlistId, pageToken) {
 }
 
 function displayResult(videoSnippet) {
-	$('.media-left').append('<a><img class="media-object" src="' + videoSnippet.thumbnails.high.url + '"></a>');
+	$('.media-left').append('<a><img class="media-object" src="' + videoSnippet.thumbnails.meduim.url + '"></a>');
 	$('.media-body').append('<h4 class="media-heading">' + videoSnippet.title + '</h4>');
 }
 
@@ -139,7 +139,7 @@ function loadPlaylists() {
 					}
 					$('#playlist-container').append('<div class="media">' + 
 														'<div class="media-left media-top">' + 
-															'<a><img class="media-object" src="' + item.snippet.thumbnails.high.url + '"></a>' + 
+															'<a><img class="media-object" src="' + item.snippet.thumbnails.medium.url + '"></a>' + 
 														'</div>' +
 														'<div class="media-body">' + 
 															'<h4 class="media-heading">' + item.snippet.title + status + '</h4>' + 
