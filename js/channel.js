@@ -77,13 +77,13 @@ function requestVideoPlaylist(playlistId, pageToken) {
 
 			$('#video-container').append('<nav><ul class="pager"><li class="previous"><a onclick="previousPage();"><span aria-hidden="true">&larr;</span> Older</a></li><li class="next disabled"><a onclick="nextPage();">Newer <span aria-hidden="true">&rarr;</span></a></li></ul></nav>');
 		
-			nextPageToken = response.result.nextPageToken;
+			/*nextPageToken = response.result.nextPageToken;
 			var nextDis = nextPageToken ? '' : 'disabled';
 			$('.next').css('class', "next" + nextDis);
 			
 			prevPageToken = response.result.prevPageToken
 			var prevDis = prevPageToken ? '' : 'disabled';
-			$('.previous').css('class', "previous" + prevDis);
+			$('.previous').css('class', "previous" + prevDis);*/
 		} else {
 			$('#video-container').append('<div class="alert alert-info" role="alert">Sorry, you have no uploaded videos :(</div>');
 		}
@@ -91,8 +91,8 @@ function requestVideoPlaylist(playlistId, pageToken) {
 }
 
 function displayResult(item) {
-	$('#video-container').append('<a><img class="media-object" src="' + item.snippet.thumbnails.meduim.url + '"></a>');
-	$('#video-container').append('<h4 class="media-heading">' + item.snippet.title + '</h4>');
+//	$('#video-container').append('<a><img class="media-object" src="' + item.snippet.thumbnails.meduim.url + '"></a>');
+	$('#video-container').append(item.snippet.title);
 }
 
 function nextPage() {
