@@ -5,7 +5,7 @@ function loadUserChannel() {
 }
 
 function displayChannel(response) {
-	if('error' in response) {
+	if ('error' in response) {
 		displayMessage(response.error.message);
 	} else {
 		channelTitle = response.items[0].snippet.title;
@@ -19,7 +19,8 @@ function displayChannel(response) {
 		bannerImageUrl = response.items[0].brandingSettings.image.bannerMobileExtraHdImageUrl;
 		
 		$('h1').html(channelTitle);
-		$('.page-header').css("backgroundImage", "url('" + bannerImageUrl + "');");
+		$('.page-header').css("background-image", "url('" + bannerImageUrl + "');");
+		$('#channelThumbnail').attr("src", thumbnailImage);
 		
 		playlistId = response.result.items[0].contentDetails.relatedPlaylists.uploads;
 		requestVideoPlaylist(playlistId);

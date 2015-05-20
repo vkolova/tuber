@@ -27,7 +27,13 @@ function handleAuthResult(authResult) {
 		loadAPIClientInterfaces();
 	} else {
 		$('#login-link').click(
-			checkAuth()
+			function() {
+				gapi.auth.authorize({
+				client_id: clientId,
+				scope: scopes,
+				immediate: true
+				}, handleAuthResult);
+			}
 		);
 	}
 }
