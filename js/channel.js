@@ -26,20 +26,29 @@ function displayChannel(response) {
 		$('h1').html(channelTitle);
 		$('.page-header').css("background-image", "url(" + bannerImageUrl + ")");
 		$('#channelThumbnail').attr("src", thumbnailImage);
-		$('#channelThumbnail').css(borderRadius: 50);
+		$('#channelThumbnail').css({"border-radius": "50px"});
 		
-		playlistId = response.result.items[0].contentDetails.relatedPlaylists.uploads;
-		requestVideoPlaylist(playlistId);
+		uploadsLoad();
 	}
+}
+
+function uploadsLoad() {
+	$('#uploads').addClass("active");
+	$('#playlists').removeClass("active");
+	$('#about').removeClass("active");
+	
+	$('#video-container').html('');
+	$('#playlist-container').html('');
+	$('#about-container').html('');
+	
+	playlistId = response.result.items[0].contentDetails.relatedPlaylists.uploads;
+	requestVideoPlaylist(playlistId);
 }
 
 function requestVideoPlaylist(playlistId, pageToken) {
 	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
-//	document.getElementById('app-body').innerHTML = '';
-//	document.getElementById('app-body').innerHTML += '<div id="video-container"></div>';
-	$('#video-container').html('');
 	
 	var requestOptions = {
 		playlistId: playlistId,
@@ -71,8 +80,7 @@ function requestVideoPlaylist(playlistId, pageToken) {
 		$('#video-container').html('<div class="alert alert-info" role="alert">Sorry, you have no uploaded videos :(</div>');
 		}
 	});
-	
-	
+
 	$('#video-container').html('<nav><ul class="pager"><li class="previous"><a onclick="previousPage();"><span aria-hidden="true">&larr;</span> Older</a></li><li class="next disabled"><a onclick="nextPage();">Newer <span aria-hidden="true">&rarr;</span></a></li></ul></nav>');
 }
 
@@ -91,8 +99,22 @@ function previousPage() {
 	requestVideoPlaylist(playlistId, prevPageToken);
 }
 
+function loadPlaylists() {
+	$('#uploads').removeClass("active");
+	$('#playlists').addClass("active");
+	$('#about').removeClass("active");
+	
+	$('#video-container').html('');
+	$('#playlist-container').html('');
+	$('#about-container').html('');
+	
+}
 
 function loadAbout() {
+	$('#uploads').removeClass("active");
+	$('#playlists').removeClass("active");
+	$('#about').addClass("active");
+	
 	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
