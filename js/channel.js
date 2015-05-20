@@ -1,6 +1,6 @@
 var channelId, subscriberCount, totalUploadViews, channelTitle,
 	thumbnailImage, bannerImageUrl, publishedAt, totalUploadViews,
-	viewCount, videoCount, description, playlistId, nextPageToken, prevPageToken;
+	viewCount, videoCount, description, playlistId, nextPageToken, prevPageToken, response;
 
 
 function loadUserChannel() {
@@ -50,6 +50,8 @@ function requestVideoPlaylist(playlistId, pageToken) {
 	$('#playlist-container').html('');
 	$('#about-container').html('');
 	
+	$('#video-container').html('<nav><ul class="pager"><li class="previous"><a onclick="previousPage();"><span aria-hidden="true">&larr;</span> Older</a></li><li class="next disabled"><a onclick="nextPage();">Newer <span aria-hidden="true">&rarr;</span></a></li></ul></nav>');
+	
 	var requestOptions = {
 		playlistId: playlistId,
 		part: 'snippet',
@@ -81,7 +83,6 @@ function requestVideoPlaylist(playlistId, pageToken) {
 		}
 	});
 
-	$('#video-container').html('<nav><ul class="pager"><li class="previous"><a onclick="previousPage();"><span aria-hidden="true">&larr;</span> Older</a></li><li class="next disabled"><a onclick="nextPage();">Newer <span aria-hidden="true">&rarr;</span></a></li></ul></nav>');
 }
 
 function displayResult(videoSnippet) {
