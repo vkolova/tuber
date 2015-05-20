@@ -63,6 +63,15 @@ UploadVideo.prototype.ready = function(accessToken) {
 
 
 UploadVideo.prototype.uploadFile = function(file) {
+	alert('call from UploadVideo.prototype.uploadFile, upload button is clicked!');
+	
+	$('#upload-container').append('<div class="progress">' +
+									'<div class="progress-bar" role="progressbar" aria-valuenow="' + 0 + 
+										'" aria-valuemin="0" aria-valuemax="100" style="width:' + 0 + '%;">' +  
+									'</div>' + 
+									'</div>');
+	
+	
   var metadata = {
     snippet: {
       title: $('#title').val(),
