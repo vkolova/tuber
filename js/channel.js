@@ -164,10 +164,12 @@ function loadAbout() {
 	$('#uploads').removeClass("active");
 	$('#playlists').removeClass("active");
 	$('#about').addClass("active");
+	$('#upload').removeClass("active");
 	
 	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
+	$('#upload-container').html('');
 	
 	if (description != undefined) {
 		$('#about-container').append('<p>' + description + '</p>')
