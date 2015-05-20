@@ -31,26 +31,24 @@ function displayChannel(response) {
 		$('.page-header').css("margin", "0px");
 		$('.page-header').css("padding", "0px");
 		
-		uploadsLoad(response);
+		uploadsLoad();
 	}
 }
 
-function uploadsLoad(response) {
+function uploadsLoad() {
 	$('#uploads').addClass("active");
 	$('#playlists').removeClass("active");
 	$('#about').removeClass("active");
 	$('#upload').removeClass("active");
-	
-	playlistId = response.result.items[0].contentDetails.relatedPlaylists.uploads;
-	requestVideoPlaylist(playlistId);
-}
 
-function requestVideoPlaylist(playlistId, pageToken) {
 	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
 	$('#upload-container').html('');
+	
+	playlistId = response.result.items[0].contentDetails.relatedPlaylists.uploads;
 
+	
 	var requestOptions = {
 		playlistId: playlistId,
 		part: 'snippet, contentDetails',
