@@ -100,7 +100,7 @@ function displayResult(item) {
 									'</div>' +
 									'<div class="media-body">' + 
 										'<h4 class="media-heading">' + item.snippet.title + '</h4>' + 
-										'<p>' + more.description + '</p>'
+										'<p>' + more.description + '</p>' +
 									'</div>' +
 								'</div>');
 }
