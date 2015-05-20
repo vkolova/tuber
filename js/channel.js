@@ -40,20 +40,23 @@ function uploadsLoad(response) {
 	$('#playlists').removeClass("active");
 	$('#about').removeClass("active");
 	$('#upload').removeClass("active");
-
+	
 	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
 	$('#upload-container').html('');
 	
 	playlistId = response.result.items[0].contentDetails.relatedPlaylists.uploads;
-	
+	requestVideoPlaylist(playlistId);
+}
+
+function requestVideoPlaylist(playlistId, pageToken) {
+
 	var requestOptions = {
 		playlistId: playlistId,
 		part: 'snippet, contentDetails',
 		maxResults: 10
 	};
-	
 	if (pageToken) {
 		requestOptions.pageToken = pageToken;
 	}
