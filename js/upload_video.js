@@ -77,7 +77,7 @@ UploadVideo.prototype.uploadFile = function(file) {
   };
   alert("time to upload...");
   var uploader = new MediaUploader({
-	  alert("media uploader failed ;//");
+	  alert("media uploader failed");
     baseUrl: 'https://www.googleapis.com/upload/youtube/v3/videos',
     file: file,
     token: this.accessToken,
