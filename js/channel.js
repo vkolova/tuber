@@ -53,7 +53,7 @@ function requestVideoPlaylist(playlistId, pageToken) {
 
 	var requestOptions = {
 		playlistId: playlistId,
-		part: 'snippet',
+		part: 'snippet, contentDetails',
 		maxResults: 10
 	};
 	if (pageToken) {
@@ -125,11 +125,11 @@ function loadPlaylists() {
 		var playlistList = response.result.items;
 
 		if (playlistList) {
-			$('#video-container').append('<div class="media"><div class="media-left"><div><div class="media-body"></div></div>')
+			$('#playlists-container').append('<div class="media"><div class="media-left"><div><div class="media-body"></div></div>')
 			
-			$.each(playList, function(index, item) {
-				$('.media-left').append('<a><img class="media-object" src="' + item.thumbnails.high.url + '"></a>');
-				$('.media-body').append('<h4 class="media-heading">' + item.title + '</h4>');
+			$.each(playlistList, function(index, item) {
+				$('.media-left').append('<a><img class="media-object" src="' + item.snippet.thumbnails.high.url + '"></a>');
+				$('.media-body').append('<h4 class="media-heading">' + item.snippet.title + '</h4>');
 				switch(item.status.privacyStatus) {
 					case "private":
 						$('.media-heading').append(' <span class="label label-danger">private</span>');
