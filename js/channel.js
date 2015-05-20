@@ -125,29 +125,23 @@ function loadPlaylists() {
 		var playlistList = response.result.items;
 
 		if (playlistList) {
-			$('#playlists-container').append('<div class="media"><div class="media-left"><div><div class="media-body"></div></div>')
-			
-			$.each(playlistList, function(index, item) {
-				$('.media-left').append('<a><img class="media-object" src="' + item.snippet.thumbnails.high.url + '"></a>');
-				$('.media-body').append('<h4 class="media-heading">' + item.snippet.title + '</h4>');
-				switch(item.status.privacyStatus) {
-					case "private":
-						$('.media-heading').append(' <span class="label label-danger">private</span>');
-						break;
-					case "unlisted":
-						$('.media-heading').append(' <span class="label label-default">unlisted</span>');
-						break;
-					default:
-						$('.media-heading').append(' <span class="label label-success">public</span>');
-				}
-				$('.media-body').append(item.contentDetails.itemCount + " videos");
-			});
-			for (var i = 0; i < playlistList.length; i++) {
-				document.getElementById('playlist-container').innerHTML += "<p>" + playlistList[i].snippet.title + "</p>";
-				document.getElementById('playlist-container').innerHTML += '<img src="' + playlistList[i].snippet.thumbnails.medium.url + '" />';
-				document.getElementById('playlist-container').innerHTML += "<p>" + playlistList[i].status.privacyStatus + "</p>";
-				document.getElementById('playlist-container').innerHTML += "<p>" + playlistList[i].contentDetails.itemCount + " videos" + "</p>";
-			}
+				$('#playlists-container').append('<div class="media"><div class="media-left"><div><div class="media-body"></div></div>')
+				
+				$.each(playlistList, function(index, item) {
+					$('.media-left').append('<a><img class="media-object" src="' + item.snippet.thumbnails.high.url + '"></a>');
+					$('.media-body').append('<h4 class="media-heading">' + item.snippet.title + '</h4>');
+					switch(item.status.privacyStatus) {
+						case "private":
+							$('.media-heading').append(' <span class="label label-danger">private</span>');
+							break;
+						case "unlisted":
+							$('.media-heading').append(' <span class="label label-default">unlisted</span>');
+							break;
+						default:
+							$('.media-heading').append(' <span class="label label-success">public</span>');
+					}
+					$('.media-body').append(item.contentDetails.itemCount + " videos");
+				});
 			} else {
 				document.getElementById('playlist-container').innerHTML += 'Sorry, you have no video playlists :(';
 			}
