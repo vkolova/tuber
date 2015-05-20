@@ -101,23 +101,19 @@ function displayResult(item) {
 									'<div class="media-body">' + 
 										'<h4 class="media-heading">' + item.snippet.title + '</h4>' + 
 										'<p>' + more.snippet.description + '</p>' +
-									'</div>' +
-								'</div>');
+									'</div>' + '</div>');
 }
 
 function moreDetails(id) {
 	var requestOptions = {
-		part: 'id, snippet, contentDetails, fileDetails,' + 
-				'liveStreamingDetails, localizations, player,' +
-				'processingDetails, recordingDetails, statistics,' +
-				' status, suggestions, topicDetails',
+		part: 'id, snippet, contentDetails, statistics, status',
 		id: id
 	};
 	if (pageToken) {
 		requestOptions.pageToken = pageToken;
 	}
 	
-	var request = gapi.client.youtube.videos(requestOptions);
+	var request = gapi.client.youtube.videos.list(requestOptions);
 	request.execute(function(response) {
 		
 		return response.result.items[0];
