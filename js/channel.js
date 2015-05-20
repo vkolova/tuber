@@ -125,11 +125,9 @@ function loadPlaylists() {
 		var playlistList = response.result.items;
 
 		if (playlistList) {
-				$('#playlist-container').append('<div class="media"><div class="media-left"><div><div class="media-body"></div></div>')
-				
 				$.each(playlistList, function(index, item) {
-					$('.media-left').append('<a><img class="media-object" src="' + item.snippet.thumbnails.high.url + '"></a>');
-					$('.media-body').append('<h4 class="media-heading">' + item.snippet.title + '</h4>');
+					$('#playlist-container').append('<div class="media"><div class="media-left"><a><img class="media-object" src="' + item.snippet.thumbnails.high.url + '"></a>');
+					$('#playlist-container').append('<div class="media-body"><h4 class="media-heading">' + item.snippet.title + '</h4>');
 					switch(item.status.privacyStatus) {
 						case "private":
 							$('.media-heading').append(' <span class="label label-danger">private</span>');
@@ -137,10 +135,12 @@ function loadPlaylists() {
 						case "unlisted":
 							$('.media-heading').append(' <span class="label label-default">unlisted</span>');
 							break;
-						default:
+						case "public":
 							$('.media-heading').append(' <span class="label label-success">public</span>');
+							break;
 					}
-					$('.media-body').append(item.contentDetails.itemCount + " videos");
+					$('#playlist-container').append(item.contentDetails.itemCount + " videos");
+					$('#playlist-container').append('</div></div>');
 				});
 			} else {
 				$('#playlist-container').html('<div class="alert alert-info" role="alert">Sorry, you have no video playlists :(</div>');
