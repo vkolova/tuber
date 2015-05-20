@@ -20,6 +20,7 @@ function loadUpload() {
 function uploadVideo(response) {
 	
 	if(result.access_token) {
+		$('#upload-container').append('access_token success');
 		var uploadVideo = new UploadVideo();
 		uploadVideo.ready(result.access_token);
 	}
