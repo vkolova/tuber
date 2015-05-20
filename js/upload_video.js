@@ -63,16 +63,6 @@ UploadVideo.prototype.ready = function(accessToken) {
 
 
 UploadVideo.prototype.uploadFile = function(file) {
-	alert('call from UploadVideo.prototype.uploadFile, upload button is clicked!');
-	
-	$('#upload-container').append('<div class="progress">' +
-									'<div class="progress-bar" role="progressbar" aria-valuenow="' +
-										'0' + 
-										'" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">' +
-										'0%' +
-									  '</div>' +
-									'</div>');
-	
 	
   var metadata = {
     snippet: {
@@ -106,22 +96,31 @@ UploadVideo.prototype.uploadFile = function(file) {
       }
     }.bind(this),
     onProgress: function(data) {
-      var currentTime = Date.now();
-      var bytesUploaded = data.loaded;
-      var totalBytes = data.total;
-      // The times are in millis, so we need to divide by 1000 to get seconds.
-      var bytesPerSecond = bytesUploaded / ((currentTime - this.uploadStartTime) / 1000);
-      var estimatedSecondsRemaining = (totalBytes - bytesUploaded) / bytesPerSecond;
-      var percentageComplete = (bytesUploaded * 100) / totalBytes;
+		var currentTime = Date.now();
+		var bytesUploaded = data.loaded;
+		var totalBytes = data.total;
+		// The times are in millis, so we need to divide by 1000 to get seconds.
+		var bytesPerSecond = bytesUploaded / ((currentTime - this.uploadStartTime) / 1000);
+		var estimatedSecondsRemaining = (totalBytes - bytesUploaded) / bytesPerSecond;
+		var percentageComplete = (bytesUploaded * 100) / totalBytes;
+
+		$('#upload-container').append('<div class="progress">' +
+								'<div class="progress-bar" id="upload-progress" role="progressbar" aria-valuenow="' +
+									percentageComplete + 
+									'" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">' +
+									percentageComplete + '%' +
+								  '</div>' +
+								'</div>');
 	
-      $('#upload-progress').attr({
+      /*$('#upload-progress').attr({
         value: bytesUploaded,
         max: totalBytes
       });
-
+		
+	
       $('#percent-transferred').text(percentageComplete);
       $('#bytes-transferred').text(bytesUploaded);
-      $('#total-bytes').text(totalBytes);
+      $('#total-bytes').text(totalBytes*/
 
       $('.during-upload').show();
     }.bind(this),
