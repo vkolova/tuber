@@ -11,7 +11,7 @@ function loadUpload() {
 	
 //	$('#upload-container').append('<label for="title">Title:</label><input id="title" type="text" value="Default Title">');
 	
-	$().append('<div class="input-group">' +
+	$('#upload-container').append('<div class="input-group">' +
 				  '<input type="text" class="form-control" placeholder="Title" id="title" aria-describedby="basic-addon1">' +
 				'</div>');
 	
@@ -22,7 +22,7 @@ function loadUpload() {
 	
 //	$('#upload-container').append('<label for="privacy-status">Privacy Status:</label><select id="privacy-status"><option>public</option><option>unlisted</option><option>private</option></select>');
 	
-	$('#upload-container').append('<select class="form-control">' +
+	$('#upload-container').append('<select class="form-control" style="width: 35%;">' +
 									  '<option>public</option>' +
 									  '<option>unlisted</option>' +
 									  '<option>private</option>' +
@@ -33,7 +33,7 @@ function loadUpload() {
 //<button id="button">Upload Video</button>');
 	
 	$('#upload-container').append('<input class="btn btn-default" id="file" type="file" value="Submit" accept="video/*">');
-	$('#upload-container').append('<input class="btn btn-default" id="button" type="submit" value="Upload Video">');
+	$('#upload-container').append('<button class="btn btn-default" id="button">Upload Video</button>');
 	
 	uploadVideo();
 }
