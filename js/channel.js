@@ -107,10 +107,8 @@ function displayResult(item) {
 
 function moreDetails(id) {
 	var requestOptions = {
-		part: 'id, snippet, contentDetails, fileDetails,' + 
-				'liveStreamingDetails, localizations, player,' +
-				'processingDetails, recordingDetails, statistics,' +
-				' status, suggestions, topicDetails',
+		part: 'id, snippet, contentDetails, fileDetails, statistics,' +
+				' status',
 		id: id
 	};
 	
