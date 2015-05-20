@@ -41,20 +41,20 @@ function uploadsLoad(response) {
 	$('#about').removeClass("active");
 	$('#upload').removeClass("active");
 	
-	$('#video-container').html('');
-	$('#playlist-container').html('');
-	$('#about-container').html('');
-	$('#upload-container').html('');
-	
 	playlistId = response.result.items[0].contentDetails.relatedPlaylists.uploads;
 	requestVideoPlaylist(playlistId);
 }
 
 function requestVideoPlaylist(playlistId, pageToken) {
-	$('#video-container').html('');
+	/*$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
-	$('#upload-container').html('');
+	$('#upload-container').html('');*/
+	
+	$('#video-container').show();
+	$('#playlist-container').hide();
+	$('#about-container').hide();
+	$('#upload-container').hide();
 
 	var requestOptions = {
 		playlistId: playlistId,
@@ -118,10 +118,16 @@ function loadPlaylists() {
 	$('#about').removeClass("active");
 	$('#upload').removeClass("active");
 	
-	$('#video-container').html('');
+	/*$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
-	$('#upload-container').html('');
+	$('#upload-container').html('');*/
+	
+	
+	$('#video-container').hide();
+	$('#playlist-container').show();
+	$('#about-container').hide();
+	$('#upload-container').hide();
 	
 	var requestOptions = {
 		channelId: channelId,
@@ -172,11 +178,17 @@ function loadAbout() {
 	$('#playlists').removeClass("active");
 	$('#about').addClass("active");
 	$('#upload').removeClass("active");
-	
+	/*
 	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
-	$('#upload-container').html('');
+	$('#upload-container').html('');*/
+	
+	
+	$('#video-container').hide();
+	$('#playlist-container').hide();
+	$('#about-container').show();
+	$('#upload-container').hide();
 	
 	if (description != undefined) {
 		$('#about-container').append('<p>' + description + '</p>')

@@ -4,10 +4,16 @@ function loadUpload() {
 	$('#about').removeClass("active");
 	$('#upload').addClass("active");
 	
-	$('#video-container').html('');
+	/*$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
-	$('#upload-container').html('');
+	$('#upload-container').html('');*/
+	
+	
+	$('#video-container').hide();
+	$('#playlist-container').hide();
+	$('#about-container').hide();
+	$('#upload-container').show();
 	
 //	$('#upload-container').append('<label for="title">Title:</label><input id="title" type="text" value="Default Title">');
 	
