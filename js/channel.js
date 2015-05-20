@@ -136,7 +136,7 @@ function loadPlaylists() {
 
 		var playlistList = response.result.items;
 
-		if (playlistList) {
+		if (playlistList.length > 0) {
 				$.each(playlistList, function(index, item) {
 					switch(item.status.privacyStatus) {
 						case "private":
@@ -160,7 +160,7 @@ function loadPlaylists() {
 													'</div>');
 				});
 			} else {
-				$('#playlist-container').html('<div class="alert alert-info" role="alert">Sorry, you have no video playlists :(</div>');
+				$('#playlist-container').append('<div class="alert alert-info" role="alert">Sorry, you have no video playlists :(</div>');
 			}
 	});
 
