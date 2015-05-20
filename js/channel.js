@@ -29,6 +29,9 @@ function displayChannel(response) {
 }
 
 function requestVideoPlaylist(playlistId, pageToken) {
+	$('#video-container').html('');
+	$('#playlist-container').html('');
+	$('#about-container').html('');
 //	document.getElementById('app-body').innerHTML = '';
 //	document.getElementById('app-body').innerHTML += '<div id="video-container"></div>';
 	$('#video-container').html('');
@@ -63,11 +66,16 @@ function requestVideoPlaylist(playlistId, pageToken) {
 		$('#video-container').html('<div class="alert alert-info" role="alert">Sorry, you have no uploaded videos :(</div>');
 		}
 	});
+	
+	
+	$('#video-container').html('<nav><ul class="pager"><li class="previous"><a onclick="previousPage();"><span aria-hidden="true">&larr;</span> Older</a></li><li class="next disabled"><a onclick="nextPage();">Newer <span aria-hidden="true">&rarr;</span></a></li></ul></nav>');
 }
 
 function displayResult(videoSnippet) {
 	var title = videoSnippet.title;
 	var videoId = videoSnippet.resourceId.videoId;
+	
+	
 }
 
 function nextPage() {
@@ -76,4 +84,17 @@ function nextPage() {
 
 function previousPage() {
 	requestVideoPlaylist(playlistId, prevPageToken);
+}
+
+
+function loadAbout() {
+	$('#video-container').html('');
+	$('#playlist-container').html('');
+	$('#about-container').html('');
+	
+	if (description != undefined) { $('#about-container').append('<p>' + description + '</p>');}
+	$('#about-container').append'<p>' + subscriberCount + ' subscribers' + '</p>'
+	$('#about-container').append('<p>' + videoCount + ' uploaded videos' + '</p>');
+	$('#about-container').append('<p>' + viewCount + ' views' + '</p>');
+	$('#about-container').append('<p>' + "Joined " + publishedAt + '</p>');
 }
