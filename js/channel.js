@@ -90,9 +90,9 @@ function requestVideoPlaylist(playlistId, pageToken) {
 	});
 }
 
-function displayResult(videoSnippet) {
-	$('#video-container').append('<a><img class="media-object" src="' + videoSnippet.thumbnails.meduim.url + '"></a>');
-	$('#video-container').append('<h4 class="media-heading">' + videoSnippet.title + '</h4>');
+function displayResult(item) {
+	$('#video-container').append('<a><img class="media-object" src="' + item.snippet.thumbnails.meduim.url + '"></a>');
+	$('#video-container').append('<h4 class="media-heading">' + item.snippet.title + '</h4>');
 }
 
 function nextPage() {
