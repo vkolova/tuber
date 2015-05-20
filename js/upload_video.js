@@ -9,10 +9,12 @@ function loadUpload() {
 	$('#about-container').html('');
 	$('#upload-container').html('');
 	
-	$('#upload-container').append('	<div>        <img id="channel-thumbnail">        <span id="channel-name"></span>      </div>      <div>        <label for="title">Title:</label>        <input id="title" type="text" value="Default Title">      </div>      <div>        <label for="description">Description:</label>        <textarea id="description">Default description</textarea>      </div>      <div>        <label for="privacy-status">Privacy Status:</label>        <select id="privacy-status">          <option>public</option>          <option>unlisted</option>          <option>private</option>        </select>      </div>      <div>        <input input type="file" id="file" class="button" accept="video/*">        <button id="button">Upload Video</button>      <div class="during-upload">        <p><span id="percent-transferred"></span>% done (<span id="bytes-transferred"></span>/<span id="total-bytes"></span> bytes)</p>        <progress id="upload-progress" max="1" value="0"></progress>      </div>      <div class="post-upload">        <p>Uploaded video with id <span id="video-id"></span>. Polling for status...</p>        <ul id="post-upload-status"></ul>        <div id="player"></div>      </div>');
+//	$('#upload-container').append('	<div>        <img id="channel-thumbnail">        <span id="channel-name"></span>      </div>      <div>        <label for="title">Title:</label>        <input id="title" type="text" value="Default Title">      </div>      <div>        <label for="description">Description:</label>        <textarea id="description">Default description</textarea>      </div>      <div>        <label for="privacy-status">Privacy Status:</label>        <select id="privacy-status">          <option>public</option>          <option>unlisted</option>          <option>private</option>        </select>      </div>      <div>        <input input type="file" id="file" class="button" accept="video/*">        <button id="button">Upload Video</button>      <div class="during-upload">        <p><span id="percent-transferred"></span>% done (<span id="bytes-transferred"></span>/<span id="total-bytes"></span> bytes)</p>        <progress id="upload-progress" max="1" value="0"></progress>      </div>      <div class="post-upload">        <p>Uploaded video with id <span id="video-id"></span>. Polling for status...</p>        <ul id="post-upload-status"></ul>        <div id="player"></div>      </div>');
 	
+	
+	
+	$('#upload-container').append('      <span          class="g-signin"          data-callback="oauth2Callback"          data-clientid="212806473548-m32vtj5f0fm077g6jrttic3hgodvs1og.apps.googleusercontent.com"data-cookiepolicy="single_host_origin"          data-scope="https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtube.upload"></span>    </span>    <div class="post-sign-in">      <div>        <img id="channel-thumbnail">        <span id="channel-name"></span>      </div><form id="upload-form">        <div>          <label for="title">Title:</label>          <input id="title" type="text" value="Default Title">        </div>        <div>          <label for="description">Description:</label>          <textarea id="description">Default description.</textarea>        </div>        <div>          <input id="file" type="file">        </div>        <input id="submit" type="submit" value="Upload"></form>      <div class="during-upload">        <p><span id="percent-transferred"></span>% done (<span id="bytes-transferred"></span>/<span id="total-bytes"></span> bytes)</p><progress id="upload-progress" max="1" value="0"></progress>      </div>      <div class="post-upload">        <p>Uploaded video with id <span id="video-id"></span>. Polling for status...</p>        <ul id="post-upload-status"></ul>        <div id="player"></div>      </div>    </div>');
 }
-
 
 var signinCallback = function (result){
   if(result.access_token) {
@@ -24,32 +26,10 @@ var signinCallback = function (result){
 var STATUS_POLLING_INTERVAL_MILLIS = 60 * 1000; // One minute.
 
 var UploadVideo = function() {
-  /**
-   * The array of tags for the new YouTube video.
-   *
-   * @attribute tags
-   * @type Array.<string>
-   * @default ['google-cors-upload']
-   */
+
   this.tags = ['youtube-cors-upload'];
 
-  /**
-   * The numeric YouTube
-   * [category id](https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.videoCategories.list?part=snippet®ionCode=us).
-   *
-   * @attribute categoryId
-   * @type number
-   * @default 22
-   */
   this.categoryId = 22;
-
-  /**
-   * The id of the new video.
-   *
-   * @attribute videoId
-   * @type string
-   * @default ''
-   */
   this.videoId = '';
 
   this.uploadStartTime = 0;
@@ -81,12 +61,7 @@ UploadVideo.prototype.ready = function(accessToken) {
   $('#button').on("click", this.handleUploadClicked.bind(this));
 };
 
-/**
- * Uploads a video file to YouTube.
- *
- * @method uploadFile
- * @param {object} file File object corresponding to the video to upload.
- */
+
 UploadVideo.prototype.uploadFile = function(file) {
   var metadata = {
     snippet: {
