@@ -76,9 +76,10 @@ UploadVideo.prototype.uploadFile = function(file) {
     }
   };
 
+	var percentageComplete = 0;
 	$('#upload-container').append('<div class="progress">' +
 							'<div class="progress-bar" id="upload-progress" role="progressbar" aria-valuenow="' +
-								Math.round(percentageComplete) + 
+								percentageComplete + 
 								'" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">' +
 								percentageComplete + '%' +
 							  '</div>' +
@@ -111,7 +112,7 @@ UploadVideo.prototype.uploadFile = function(file) {
 		// The times are in millis, so we need to divide by 1000 to get seconds.
 		var bytesPerSecond = bytesUploaded / ((currentTime - this.uploadStartTime) / 1000);
 		var estimatedSecondsRemaining = (totalBytes - bytesUploaded) / bytesPerSecond;
-		var percentageComplete = (bytesUploaded * 100) / totalBytes;
+		percentageComplete = Math.round((bytesUploaded * 100) / totalBytes);
 
 	
       /*$('#upload-progress').attr({
