@@ -32,9 +32,31 @@
 	<div id="post-auth">
 		
 		<div class="page-header">
+			<ul class="nav nav-tabs">
+			  <li role="presentation" class="active"><a >Uploads</a></li>
+			  <li role="presentation"><a>Playlists</a></li>
+			  <li role="presentation"><a>About</a></li>
+			</ul>
+		
 			<img class="thumbnail" id='channelThumbnail' src="..." alt="...">
 			
 			<h1></h1>
+		</div>
+		
+		<div class="page-body">
+			<div id="video-container">
+				<nav>
+					<ul class="pager">
+						<li class="previous"><a onclick="previousPage();"><span aria-hidden="true">&larr;</span> Older</a></li>
+						<li class="next disabled"><a onclick="nextPage();">Newer <span aria-hidden="true">&rarr;</span></a></li>
+					</ul>
+				</nav>
+			</div>
+			
+			<div id="playlist-container"></div>
+			
+			<div id="about-container"></div>
+			
 		</div>
 	
 	</div>
