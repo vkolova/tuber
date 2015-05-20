@@ -37,10 +37,12 @@ function uploadsLoad(response) {
 	$('#uploads').addClass("active");
 	$('#playlists').removeClass("active");
 	$('#about').removeClass("active");
+	$('#upload').removeClass("active");
 	
 	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
+	$('#upload-container').html('');
 	
 	playlistId = response.result.items[0].contentDetails.relatedPlaylists.uploads;
 	requestVideoPlaylist(playlistId);
@@ -50,6 +52,7 @@ function requestVideoPlaylist(playlistId, pageToken) {
 	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
+	$('#upload-container').html('');
 
 	var requestOptions = {
 		playlistId: playlistId,
@@ -106,10 +109,12 @@ function loadPlaylists() {
 	$('#uploads').removeClass("active");
 	$('#playlists').addClass("active");
 	$('#about').removeClass("active");
+	$('#upload').removeClass("active");
 	
 	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
+	$('#upload-container').html('');
 	
 	var requestOptions = {
 		channelId: channelId,
