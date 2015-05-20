@@ -114,14 +114,8 @@ UploadVideo.prototype.uploadFile = function(file) {
 		var estimatedSecondsRemaining = (totalBytes - bytesUploaded) / bytesPerSecond;
 		percentageComplete = Math.round((bytesUploaded * 100) / totalBytes);
 
-	
-      $('#upload-progress').attr('aria-valuenow', percentageComplete);
+      $('#upload-progress').attr('valuenow', percentageComplete);
 	  $('#upload-progress').html(percentageComplete + '%');
-		
-	
-      /*$('#percent-transferred').text(percentageComplete);
-      $('#bytes-transferred').text(bytesUploaded);
-      $('#total-bytes').text(totalBytes*/
 
       $('.during-upload').show();
     }.bind(this),
