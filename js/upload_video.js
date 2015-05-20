@@ -66,9 +66,11 @@ UploadVideo.prototype.uploadFile = function(file) {
 	alert('call from UploadVideo.prototype.uploadFile, upload button is clicked!');
 	
 	$('#upload-container').append('<div class="progress">' +
-									'<div class="progress-bar" role="progressbar" aria-valuenow="' + 0 + 
-										'" aria-valuemin="0" aria-valuemax="100" style="width:' + 0 + '%;">' +  
-									'</div>' + 
+									'<div class="progress-bar" role="progressbar" aria-valuenow="' +
+										'0' + 
+										'" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">' +
+										'0%' +
+									  '</div>' +
 									'</div>');
 	
 	
@@ -111,7 +113,7 @@ UploadVideo.prototype.uploadFile = function(file) {
       var bytesPerSecond = bytesUploaded / ((currentTime - this.uploadStartTime) / 1000);
       var estimatedSecondsRemaining = (totalBytes - bytesUploaded) / bytesPerSecond;
       var percentageComplete = (bytesUploaded * 100) / totalBytes;
-
+	
       $('#upload-progress').attr({
         value: bytesUploaded,
         max: totalBytes
