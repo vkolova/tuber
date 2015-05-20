@@ -75,7 +75,15 @@ UploadVideo.prototype.uploadFile = function(file) {
       privacyStatus: $('#privacy-status option:selected').text()
     }
   };
-  alert("time to upload...");
+
+	$('#upload-container').append('<div class="progress">' +
+							'<div class="progress-bar" id="upload-progress" role="progressbar" aria-valuenow="' +
+								Math.round(percentageComplete) + 
+								'" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">' +
+								percentageComplete + '%' +
+							  '</div>' +
+							'</div>');
+  
   var uploader = new MediaUploader({
     baseUrl: 'https://www.googleapis.com/upload/youtube/v3/videos',
     file: file,
@@ -105,13 +113,6 @@ UploadVideo.prototype.uploadFile = function(file) {
 		var estimatedSecondsRemaining = (totalBytes - bytesUploaded) / bytesPerSecond;
 		var percentageComplete = (bytesUploaded * 100) / totalBytes;
 
-		$('#upload-container').append('<div class="progress">' +
-								'<div class="progress-bar" id="upload-progress" role="progressbar" aria-valuenow="' +
-									percentageComplete + 
-									'" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">' +
-									percentageComplete + '%' +
-								  '</div>' +
-								'</div>');
 	
       /*$('#upload-progress').attr({
         value: bytesUploaded,
