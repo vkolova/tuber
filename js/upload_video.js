@@ -14,6 +14,16 @@ function loadUpload() {
 	$('#upload-container').append('<label for="privacy-status">Privacy Status:</label><select id="privacy-status"><option>public</option><option>unlisted</option><option>private</option></select>');
 	$('#upload-container').append('<input input type="file" id="file" class="button" accept="video/*"><button id="button">Upload Video</button>');
 
-	
+	uploadVideo();
 }
 
+function uploadVideo(response) {
+	
+	if(result.access_token) {
+		var uploadVideo = new UploadVideo();
+		uploadVideo.ready(result.access_token);
+	}
+
+	
+	
+}

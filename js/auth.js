@@ -4,6 +4,7 @@ var scopes = ['https://www.googleapis.com/auth/youtube', 'https://www.googleapis
 			'https://www.googleapis.com/auth/youtube.upload', 'https://www.googleapis.com/auth/youtubepartner',
 			'https://www.googleapis.com/auth/youtubepartner-channel-audit', 'https://www.googleapis.com/auth/youtube.force-ssl'];
 
+var response;
 
 function onClientLoad() {
 	$('#post-auth').hide();
@@ -14,7 +15,7 @@ function onClientLoad() {
 
 
 function checkAuth() {
-	gapi.auth.authorize({
+	response = gapi.auth.authorize({
 		client_id: clientId,
 		scope: scopes,
 		immediate: true
