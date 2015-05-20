@@ -9,6 +9,8 @@ function loadUserChannel() {
 	request.execute(displayChannel);
 }
 
+var Response;
+
 function displayChannel(response) {	
 	if ('error' in response) {
 		displayMessage(response.error.message);
@@ -31,11 +33,12 @@ function displayChannel(response) {
 		$('.page-header').css("margin", "0px");
 		$('.page-header').css("padding", "0px");
 		
+		Response = response;
 		uploadsLoad();
 	}
 }
 
-function uploadsLoad(response) {
+function uploadsLoad() {
 	$('#uploads').addClass("active");
 	$('#playlists').removeClass("active");
 	$('#about').removeClass("active");
@@ -46,7 +49,7 @@ function uploadsLoad(response) {
 	$('#about-container').html('');
 	$('#upload-container').html('');
 	
-	playlistId = response.result.items[0].contentDetails.relatedPlaylists.uploads;
+	playlistId = Response.result.items[0].contentDetails.relatedPlaylists.uploads;
 	requestVideoPlaylist(playlistId);
 }
 
@@ -75,11 +78,11 @@ function requestVideoPlaylist(playlistId, pageToken) {
 
 			$('#video-container').append('<nav><ul class="pager"><li class="previous"><a onclick="previousPage();"><span aria-hidden="true">&larr;</span> Older</a></li><li class="next disabled"><a onclick="nextPage();">Newer <span aria-hidden="true">&rarr;</span></a></li></ul></nav>');
 		
-			nextPageToken = response.result.nextPageToken;
+			nextPageToken = R.result.nextPageToken;
 			var nextDis = nextPageToken ? '' : 'disabled';
 			$('.next').css('class', "next" + nextDis);
 			
-			prevPageToken = response.result.prevPageToken
+			prevPageToken = Response.result.prevPageToken
 			var prevDis = prevPageToken ? '' : 'disabled';
 			$('.previous').css('class', "previous" + prevDis);
 		} else {
