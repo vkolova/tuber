@@ -140,7 +140,7 @@ function loadPlaylists() {
 					$('#playlist-container').append('<div class="media">' + 
 														'<div class="media-left media-top">' + 
 															'<a><img class="media-object" src="' + item.snippet.thumbnails.high.url + '"></a>' + 
-														'</div>'
+														'</div>' +
 														'<div class="media-body">' + 
 															'<h4 class="media-heading">' + item.snippet.title + status + '</h4>' + 
 														'</div>'
