@@ -9,11 +9,32 @@ function loadUpload() {
 	$('#about-container').html('');
 	$('#upload-container').html('');
 	
-	$('#upload-container').append('<label for="title">Title:</label><input id="title" type="text" value="Default Title">');
-	$('#upload-container').append('<label for="description">Description:</label><textarea id="description">Default description</textarea>');
-	$('#upload-container').append('<label for="privacy-status">Privacy Status:</label><select id="privacy-status"><option>public</option><option>unlisted</option><option>private</option></select>');
-	$('#upload-container').append('<input input type="file" id="file" class="button" accept="video/*"><button id="button">Upload Video</button>');
+//	$('#upload-container').append('<label for="title">Title:</label><input id="title" type="text" value="Default Title">');
+	
+	$().append('<div class="input-group">' +
+				  '<input type="text" class="form-control" placeholder="Title" id="title" aria-describedby="basic-addon1">' +
+				'</div>');
+	
+//	$('#upload-container').append('<label for="description">Description:</label><textarea id="description">Default description</textarea>');
+	$('#upload-container').append('<div class="input-group">' +
+							  '<input type="text" class="form-control" id="description" placeholder="description" aria-describedby="basic-addon1">' +
+							'</div>');
+	
+//	$('#upload-container').append('<label for="privacy-status">Privacy Status:</label><select id="privacy-status"><option>public</option><option>unlisted</option><option>private</option></select>');
+	
+	$('#upload-container').append('<select class="form-control">' +
+									  '<option>public</option>' +
+									  '<option>unlisted</option>' +
+									  '<option>private</option>' +
+									'</select>');
+	
 
+//	$('#upload-container').append('<input input type="file" id="file" class="button" accept="video/*">
+//<button id="button">Upload Video</button>');
+	
+	$('#upload-container').append('<input class="btn btn-default" id="file" type="file" value="Submit" accept="video/*">');
+	$('#upload-container').append('<input class="btn btn-default" id="button" type="submit" value="Upload Video">');
+	
 	uploadVideo();
 }
 
@@ -80,7 +101,7 @@ UploadVideo.prototype.uploadFile = function(file) {
 	$('#upload-container').append('<div class="progress">' +
 							'<div class="progress-bar" id="upload-progress" role="progressbar" aria-valuenow="' +
 								percentageComplete + 
-								'" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">' +
+								'" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 40%;">' +
 								percentageComplete + '%' +
 							  '</div>' +
 							'</div>');
