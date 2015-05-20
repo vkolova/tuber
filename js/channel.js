@@ -113,9 +113,7 @@ function moreDetails(id) {
 				' status, suggestions, topicDetails',
 		id: id
 	};
-	if (pageToken) {
-		requestOptions.pageToken = pageToken;
-	}
+	
 	var request = gapi.client.youtube.videos(requestOptions);
 	request.execute(function(response) {
 		return response.result.items[0];
