@@ -137,7 +137,12 @@ function loadPlaylists() {
 							status = ' <span class="label label-success">public</span>';
 							break;
 					}
-					$('#playlist-container').append('<div class="media"><div class="media-left media-top"><a><img class="media-object" src="' + item.snippet.thumbnails.high.url + '"></a><div class="media-body"><h4 class="media-heading">' + item.snippet.title + status + '</h4>' + item.contentDetails.itemCount + " videos" + '</div></div>');
+					$('#playlist-container').append('<div class="media">' + 
+									'<div class="media-left media-top">' + 
+										'<a><img class="media-object" src="' + item.snippet.thumbnails.high.url + '"></a>' + '</div>'
+									'<div class="media-body">' + 
+										'<h4 class="media-heading">' + item.snippet.title + status + '</h4>' + '</div>'
+									item.contentDetails.itemCount + " videos" + '</div></div>');
 				});
 			} else {
 				$('#playlist-container').html('<div class="alert alert-info" role="alert">Sorry, you have no video playlists :(</div>');
