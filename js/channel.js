@@ -31,11 +31,11 @@ function displayChannel(response) {
 		$('.page-header').css("margin", "0px");
 		$('.page-header').css("padding", "0px");
 		
-		uploadsLoad();
+		uploadsLoad(response);
 	}
 }
 
-function uploadsLoad() {
+function uploadsLoad(response) {
 	$('#uploads').addClass("active");
 	$('#playlists').removeClass("active");
 	$('#about').removeClass("active");
