@@ -1,6 +1,6 @@
 var channelId, subscriberCount, totalUploadViews, channelTitle,
 	thumbnailImage, bannerImageUrl, publishedAt, totalUploadViews,
-	viewCount, videoCount, description, playlistId, nextPageToken, prevPageToken, response;
+	viewCount, videoCount, description, playlistId, nextPageToken, prevPageToken;
 
 
 function loadUserChannel() {
@@ -47,13 +47,13 @@ function uploadsLoad(response) {
 	$('#upload-container').html('');
 	
 	playlistId = response.result.items[0].contentDetails.relatedPlaylists.uploads;
-
 	
 	var requestOptions = {
 		playlistId: playlistId,
 		part: 'snippet, contentDetails',
 		maxResults: 10
 	};
+	
 	if (pageToken) {
 		requestOptions.pageToken = pageToken;
 	}
