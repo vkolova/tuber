@@ -77,7 +77,7 @@ function requestVideoPlaylist(playlistId, pageToken) {
 				displayResult(item.snippet);
 			});
 
-			$('#video-container').html('<nav><ul class="pager"><li class="previous"><a onclick="previousPage();"><span aria-hidden="true">&larr;</span> Older</a></li><li class="next disabled"><a onclick="nextPage();">Newer <span aria-hidden="true">&rarr;</span></a></li></ul></nav>');
+			$('#video-container').append('<nav><ul class="pager"><li class="previous"><a onclick="previousPage();"><span aria-hidden="true">&larr;</span> Older</a></li><li class="next disabled"><a onclick="nextPage();">Newer <span aria-hidden="true">&rarr;</span></a></li></ul></nav>');
 		
 			nextPageToken = response.result.nextPageToken;
 			var nextDis = nextPageToken ? '' : 'disabled';
@@ -87,7 +87,7 @@ function requestVideoPlaylist(playlistId, pageToken) {
 			var prevDis = prevPageToken ? '' : 'disabled';
 			$('.previous').css('class', "previous" + prevDis);
 		} else {
-			$('#video-container').html('<div class="alert alert-info" role="alert">Sorry, you have no uploaded videos :(</div>');
+			$('#video-container').append('<div class="alert alert-info" role="alert">Sorry, you have no uploaded videos :(</div>');
 		}
 	});
 }
