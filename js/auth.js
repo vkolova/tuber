@@ -4,7 +4,7 @@ var scopes = ['https://www.googleapis.com/auth/youtube', 'https://www.googleapis
 			'https://www.googleapis.com/auth/youtube.upload', 'https://www.googleapis.com/auth/youtubepartner',
 			'https://www.googleapis.com/auth/youtubepartner-channel-audit', 'https://www.googleapis.com/auth/youtube.force-ssl'];
 var grantType = 'authorization_code', accessToken, response;
-var defaultchannelid = 'UC7Cc_i0i7pC-sWkrEMorLjw ';
+var defaultchannelid = 'UC7Cc_i0i7pC-sWkrEMorLjw';
 			
 function onClientLoad() {
 	$('.dropdown-toggle').dropdown()
@@ -48,16 +48,10 @@ function loadAPIClientInterfaces() {
 		gapi.client.load('youtubeAnalytics', 'v1', function(){
 
 		var request = gapi.client.youtube.channels.list({
-		mine: true, part: 'id, contentDetails, , snippet, '}); 
-
-		request.execute(function(response){
-
-			console.log(response.items[0].id + "   " + response.items[0].snippet.title);
+			mine: true, part: 'id, contentDetails, , snippet, '}); 
+			request.execute(function(response){
+				console.log(response.items[0].id + "   " + response.items[0].snippet.title);
 		});
-
-
-
-
 		});
 	});
 }
