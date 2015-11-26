@@ -28,7 +28,7 @@ function handleAuthResult(authResult) {
 	response = authResult;
 	
 	if (authResult && !authResult.error) {
-		alert("EVERYTHING'S OKAY! WE'RE OKAY!");
+//		alert("EVERYTHING'S OKAY! WE'RE OKAY!");
 		loadAPIClientInterfaces();
 	} else {
 		$('#login-link').click(forceAuthCheck());
@@ -52,7 +52,7 @@ var request = gapi.client.youtube.channels.list({
 
 		request.execute(function(response){
 
-			alert(response.items[0].snippet.title);
+			alert(response.items[0].id);
 		});
 
 
