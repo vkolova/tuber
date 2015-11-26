@@ -27,9 +27,7 @@ function handleAuthResult(authResult) {
 	response = authResult;
 	
 	if (authResult && !authResult.error) {
-
-		$('#pre-auth').hide();
-		$('#post-auth').show();
+		alert("EVERYTHING'S OKAY! WE'RE OKAY!");
 		loadAPIClientInterfaces();
 	} else {
 		$('#login-link').click(forceAuthCheck());
