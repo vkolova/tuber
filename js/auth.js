@@ -29,16 +29,6 @@ function handleAuthResult(authResult) {
 	
 	if (authResult && !authResult.error) {
 		alert("EVERYTHING'S OKAY! WE'RE OKAY!");
-
-		var request = gapi.client.youtube.channels.list({
-		mine: true, part: 'id, contentDetails, statistics, snippet, brandingSettings'}); 
-
-		request.execute(function(response){
-
-			alert(response.items[0].snippet.id);
-		});
-
-
 		loadAPIClientInterfaces();
 	} else {
 		$('#login-link').click(forceAuthCheck());
@@ -55,6 +45,19 @@ function forceAuthCheck() {
 
 function loadAPIClientInterfaces() {
 	gapi.client.load('youtube', 'v3', function() {
-		gapi.client.load('youtubeAnalytics', 'v1', loadUserChannel);
+		gapi.client.load('youtubeAnalytics', 'v1', function(){
+
+var request = gapi.client.youtube.channels.list({
+		mine: true, part: 'id, contentDetails, statistics, snippet, brandingSettings'}); 
+
+		request.execute(function(response){
+
+			alert(response.items[0].snippet.id);
+		});
+
+
+
+			
+		});
 	});
 }
