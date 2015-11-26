@@ -52,12 +52,12 @@ var request = gapi.client.youtube.channels.list({
 
 		request.execute(function(response){
 
-			alert(response.items[0].snippet.id);
+			alert(response.items[0].snippet.title);
 		});
 
 
 
-			
+
 		});
 	});
 }
