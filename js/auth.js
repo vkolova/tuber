@@ -6,7 +6,7 @@ var scopes = ['https://www.googleapis.com/auth/youtube', 'https://www.googleapis
 var grantType = 'authorization_code', accessToken, response;
 			
 function onClientLoad() {
-	$('#post-auth').hide();
+	$('.dropdown-toggle').dropdown()
 	gapi.auth.init(function() {
 		window.setTimeout(checkAuth, 1);
 	});
