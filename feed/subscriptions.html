@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>tuber</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+		<script type="text/javascript" src="js/auth.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		
+		<script src="https://apis.google.com/js/client.js?onload=onClientLoad"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+
+	<head>
+	
+	<body>
+
+		<ul class="nav nav-pills">
+			<li role="presentation"><a href="#">Home</a></li>
+			<li role="presentation" class="active"><a href="feed/subscriptions.html">Subscriptions</a></li>
+			<li role="presentation"><a href="#">Profile</a></li>
+		</ul>
+
+		<div class="btn-group">
+		 	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<span class="glyphicon glyphicon-off" aria-hidden="true"></span><span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" data-toggle="dropdown">
+			<li><a href="#" id="login-link" onclick="forceAuthCheck()">Change channel</a></li>
+		    
+		    <li role="separator" class="divider"></li>
+		    <li><a href="#">TBC</a></li>
+		  </ul>
+		</div>
+
+
+
+	</body>
+</html>
