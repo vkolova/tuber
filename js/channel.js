@@ -16,6 +16,7 @@ function displayChannel(response) {
 		displayMessage(response.error.message);
 	} else {
 		channelTitle = response.items[0].snippet.title;
+		alert(response.items[0].snippet.id);
 		description = response.items[0].brandingSettings.channel.description;
 		subscriberCount = response.items[0].statistics.subscriberCount;
 		publishedAt = response.items[0].snippet.publishedAt;
