@@ -13,6 +13,7 @@ var Response;
 
 function displayChannel(response) {	
 	if ('error' in response) {
+		alert("!!!!!!");
 		displayMessage(response.error.message);
 	} else {
 		channelTitle = response.items[0].snippet.title;
