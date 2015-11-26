@@ -52,7 +52,7 @@ var request = gapi.client.youtube.channels.list({
 
 		request.execute(function(response){
 
-			alert(response.items[0].id);
+			console.log(response.items[0].id + "   " + response.items[0].title);
 		});
 
 
