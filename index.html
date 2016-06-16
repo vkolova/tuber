@@ -4,72 +4,44 @@
 		<meta charset="utf-8" />
 		<title>tuber</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+		<script type="text/javascript" src="js/cors_upload.js"></script>
+
+		<script type="text/javascript" src="js/upload_video.js"></script>
+		<script type="text/javascript" src="js/channel.js"></script>
 		<script type="text/javascript" src="js/auth.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-
+		
 		<script src="https://apis.google.com/js/client.js?onload=onClientLoad"></script>
-
+		
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 
-	</head>
-
+	<head>
+	
 	<body>
-
+	
 	<div id="pre-auth">
 		<div class="alert alert-warning" role="alert">
 			Oh snap! This application requires access to your YouTube account.
 			Please <span id="login-link" onclick="forceAuthCheck()" ><b>authorize</b></span> to continue.
 		</div>
 	</div>
-<<<<<<< HEAD
-
-
-	<button type="button" class="btn btn-default">
-  		<span class="glyphicon glyphicon-off" aria-hidden="true" id="login-link" onclick="forceAuthCheck()"></span>
-	</button>
-
-
-		<!-- <ul class="nav nav-pills">
-			<li role="presentation" class="active"><a href="/index.html">Home</a></li>
-		  <li role="presentation"><a href="feed/subscriptions.html">Subscriptions</a></li>
-		  <li role="presentation"><a href="#">Profile</a></li>
-		</ul>
-
-		<div class="btn-group">
-		 	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<span class="glyphicon glyphicon-off" aria-hidden="true"></span><span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" data-toggle="dropdown">
-			<li><a href="#" id="login-link" onclick="forceAuthCheck()">Change channel</a></li>
-
-		    <li role="separator" class="divider"></li>
-		    <li><a href="#">TBC</a></li>
-		  </ul>
-		</div> -->
-
-
-
-
-
-=======
 	
->>>>>>> parent of 38207da... when YT cuts out features you gotta fight
 	<div id="post-auth">
-
+		
 		<div class="channel-header">
 			<div class="page-header"></div>
-
+			
 			<img class="thumbnail" id='channelThumbnail' src="..." alt="...">
-
+			
 			<h1></h1>
-
+			
 			<ul class="nav nav-tabs">
 			  <li role="presentation" id="uploads"><a onclick="uploadsLoad()">Uploads</a></li>
 			  <li role="presentation" id="playlists"><a onclick="loadPlaylists()">Playlists</a></li>
@@ -78,23 +50,19 @@
 			</ul>
 
 		</div>
-
+		
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div id="video-container"></div>
-
+				
 				<div id="playlist-container"></div>
-
+				
 				<div id="about-container"></div>
-
+				
 				<div id="upload-container"></div>
 			</div>
 		</div>
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> parent of 38207da... when YT cuts out features you gotta fight
 	</div>
 	</body>
 </html>

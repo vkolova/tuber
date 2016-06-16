@@ -4,10 +4,9 @@ var scopes = ['https://www.googleapis.com/auth/youtube', 'https://www.googleapis
 			'https://www.googleapis.com/auth/youtube.upload', 'https://www.googleapis.com/auth/youtubepartner',
 			'https://www.googleapis.com/auth/youtubepartner-channel-audit', 'https://www.googleapis.com/auth/youtube.force-ssl'];
 var grantType = 'authorization_code', accessToken, response;
-var defaultchannelid = 'UC7Cc_i0i7pC-sWkrEMorLjw';
 			
 function onClientLoad() {
-	$('.dropdown-toggle').dropdown()
+	$('#post-auth').hide();
 	gapi.auth.init(function() {
 		window.setTimeout(checkAuth, 1);
 	});
@@ -28,7 +27,9 @@ function handleAuthResult(authResult) {
 	response = authResult;
 	
 	if (authResult && !authResult.error) {
-//		alert("EVERYTHING'S OKAY! WE'RE OKAY!");
+
+		$('#pre-auth').hide();
+		$('#post-auth').show();
 		loadAPIClientInterfaces();
 	} else {
 		$('#login-link').click(forceAuthCheck());
@@ -45,13 +46,6 @@ function forceAuthCheck() {
 
 function loadAPIClientInterfaces() {
 	gapi.client.load('youtube', 'v3', function() {
-		gapi.client.load('youtubeAnalytics', 'v1', function(){
-
-		var request = gapi.client.youtube.channels.list({
-			mine: true, part: 'id, contentDetails, , snippet, '}); 
-			request.execute(function(response){
-				console.log(response.items[0].id + "   " + response.items[0].snippet.title);
-		});
-		});
+		gapi.client.load('youtubeAnalytics', 'v1', loadUserChannel);
 	});
 }
