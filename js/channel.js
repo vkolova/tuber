@@ -5,13 +5,13 @@ var channelId, subscriberCount, totalUploadViews, channelTitle,
 
 function loadUserChannel() {
 	var request = gapi.client.youtube.channels.list({
-		mine: true, part: 'id, contentDetails, statistics, snippet, brandingSettings'});   
+		mine: true, part: 'id, contentDetails, statistics, snippet, brandingSettings'});
 	request.execute(displayChannel);
 }
 
 var Response;
 
-function displayChannel(response) {	
+function displayChannel(response) {
 	if ('error' in response) {
 		displayMessage(response.error.message);
 	} else {
@@ -32,7 +32,7 @@ function displayChannel(response) {
 		$('#channelThumbnail').css({"border-radius": "140px"});
 		$('.page-header').css("margin", "0px");
 		$('.page-header').css("padding", "0px");
-		
+
 		Response = response;
 		uploadsLoad();
 	}
@@ -43,12 +43,12 @@ function uploadsLoad() {
 	$('#playlists').removeClass("active");
 	$('#about').removeClass("active");
 	$('#upload').removeClass("active");
-	
+
 	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
 	$('#upload-container').html('');
-	
+
 	playlistId = Response.result.items[0].contentDetails.relatedPlaylists.uploads;
 	requestVideoPlaylist(playlistId);
 }
@@ -71,17 +71,17 @@ function requestVideoPlaylist(playlistId, pageToken) {
 
 		var playlistItems = response.result.items;
 		if (playlistItems.length > 0) {
-			
+
 			$.each(playlistItems, function(index, item) {
 				displayResult(item);
 			});
 
 			$('#video-container').append('<nav><ul class="pager"><li class="previous"><a onclick="previousPage();"><span aria-hidden="true">&larr;</span> Older</a></li><li class="next disabled"><a onclick="nextPage();">Newer <span aria-hidden="true">&rarr;</span></a></li></ul></nav>');
-		
-			nextPageToken = R.result.nextPageToken;
+
+			nextPageToken = Response.result.nextPageToken;
 			var nextDis = nextPageToken ? '' : 'disabled';
 			$('.next').css('class', "next" + nextDis);
-			
+
 			prevPageToken = Response.result.prevPageToken
 			var prevDis = prevPageToken ? '' : 'disabled';
 			$('.previous').css('class', "previous" + prevDis);
@@ -94,12 +94,12 @@ function requestVideoPlaylist(playlistId, pageToken) {
 function displayResult(item) {
 //	$('#video-container').append('<a><img class="media-object" src="' + item.snippet.thumbnails.meduim.url + '"></a>');
 
-	$('#video-container').append('<div class="media">' + 
-									'<div class="media-left media-top">' + 
-										'<a><img class="media-object" src="' + item.snippet.thumbnails.medium.url + '"></a>' + 
+	$('#video-container').append('<div class="media">' +
+									'<div class="media-left media-top">' +
+										'<a><img class="media-object" src="' + item.snippet.thumbnails.medium.url + '"></a>' +
 									'</div>' +
-									'<div class="media-body">' + 
-										'<h4 class="media-heading">' + item.snippet.title + '</h4>' + 
+									'<div class="media-body">' +
+										'<h4 class="media-heading">' + item.snippet.title + '</h4>' +
 									'</div>' +
 								'</div>');
 }
@@ -119,21 +119,21 @@ function loadPlaylists() {
 	$('#playlists').addClass("active");
 	$('#about').removeClass("active");
 	$('#upload').removeClass("active");
-	
+
 	$('#video-container').html('');
 	$('#playlist-container').html('');
 	$('#about-container').html('');
 	$('#upload-container').html('');
-	
+
 	var requestOptions = {
 		channelId: channelId,
 		mine: true,
 		part: 'snippet, contentDetails, status, contentDetails',
 		maxResults: 10
 	};
-	
+
 	var request = gapi.client.youtube.playlists.list(requestOptions);
-	
+
 	request.execute(function(response) {
 
 		var playlistList = response.result.items;
@@ -151,13 +151,13 @@ function loadPlaylists() {
 							status = ' <span class="label label-success">public</span>';
 							break;
 					}
-					$('#playlist-container').append('<div class="media">' + 
-														'<div class="media-left media-top">' + 
-															'<a><img class="media-object" src="' + item.snippet.thumbnails.medium.url + '"></a>' + 
+					$('#playlist-container').append('<div class="media">' +
+														'<div class="media-left media-top">' +
+															'<a><img class="media-object" src="' + item.snippet.thumbnails.medium.url + '"></a>' +
 														'</div>' +
-														'<div class="media-body">' + 
-															'<h4 class="media-heading">' + item.snippet.title + status + '</h4>' + 
-															item.contentDetails.itemCount + " videos" + 
+														'<div class="media-body">' +
+															'<h4 class="media-heading">' + item.snippet.title + status + '</h4>' +
+															item.contentDetails.itemCount + " videos" +
 														'</div>' +
 													'</div>');
 				});
@@ -166,7 +166,7 @@ function loadPlaylists() {
 			}
 	});
 
-	
+
 }
 
 function loadAbout() {
@@ -179,7 +179,7 @@ function loadAbout() {
 	$('#playlist-container').html('');
 	$('#about-container').html('');
 	$('#upload-container').html('');
-	
+
 	if (description != undefined) {
 		$('#about-container').append('<p>' + description + '</p>')
 	;}
